@@ -31,10 +31,30 @@ function calculateCanMiss(attended, conducted, remaining) {
 
     return Math.min(canMiss, remaining);
 }
+function calculateClassesRequired(attended, conducted) {
+    if (conducted === 0) {
+        return 0;
+    }
 
+    if ((attended / conducted) >= 0.75) {
+        return 0;
+    }
+
+    let required = 0;
+
+    while (
+        (attended + required) /
+        (conducted + required) < 0.75
+    ) {
+        required++;
+    }
+
+    return required;
+}
 
 module.exports = {
     calculatePercentage,
     getStatus,
-    calculateCanMiss
+    calculateCanMiss,
+    calculateClassesRequired
 };
