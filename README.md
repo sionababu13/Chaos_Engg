@@ -1,137 +1,120 @@
-# 📊 Upasthiti – Smart Student Attendance Management System
+# AttendEase – Smart Student Attendance Management System
 
-**Upasthiti** is a student-focused attendance management system designed to help students monitor their attendance subject-wise, maintain the required **75% attendance criteria**, and make informed decisions about their upcoming classes.
+AttendEase is a student-focused attendance management system designed to help students track their subject-wise attendance, monitor attendance percentages, and plan their classes effectively to maintain the minimum required attendance.
 
-The application provides a simple and intuitive dashboard where students can manage subjects, record daily attendance, review their attendance history, and receive personalized recommendations to maintain or recover their attendance.
+The application provides a centralized dashboard where students can manage subjects, record daily attendance, review attendance history, and receive recommendations to maintain or improve their attendance.
 
----
+## Features
 
-## 🎯 Problem Statement
+### 1. Attendance Dashboard
 
-Many colleges require students to maintain a minimum attendance percentage, commonly 75%, to be eligible for examinations.
+* View overall attendance percentage across all subjects.
+* Monitor total classes conducted, attended, and remaining.
+* Get a quick overview of attendance status.
+* Identify subjects that require attention.
 
-Manually tracking attendance becomes challenging when:
+### 2. Subject Management
 
-* Different subjects have different numbers of conducted classes.
-* Attendance needs to be recorded for individual subjects and dates.
-* Students need to know how many more classes they can miss.
-* Students below the required percentage need to calculate how many consecutive classes they must attend to recover.
-* Students need to monitor their overall attendance throughout the semester.
-
-**Upasthiti addresses these challenges through automated attendance calculations, subject-wise tracking, and smart recommendations.**
-
----
-
-## ✨ Features
-
-### 📚 Subject Management
-
-* Add multiple subjects for a semester.
-* Allocate lectures to individual subjects.
-* Track attendance separately for every subject.
-* View attended, absent, conducted, and remaining lectures.
+* Add and manage subjects.
+* Set the number of lectures allotted to each subject.
+* Track conducted, attended, and remaining lectures.
+* Maintain a semester limit of 60 lectures.
 * Prevent duplicate subject entries.
-* Enforce a semester lecture allocation limit of 60 lectures.
 
-### 🗓️ Daily Attendance Tracking
+### 3. Daily Attendance Tracking
 
-* Record attendance as Present or Absent.
-* Select the subject and lecture date.
-* Record attendance for different subjects on the same date.
+* Mark attendance as Present or Absent.
+* Record attendance for individual subjects by date.
 * Prevent duplicate attendance records for the same subject and date.
-* Support historical attendance entries.
+* Update attendance records when necessary.
+* Delete incorrect records while automatically updating subject statistics.
 
-### 📈 Attendance Dashboard
+### 4. Attendance History
 
-* View overall attendance percentage.
-* Monitor total classes attended and conducted.
-* Track the number of subjects added.
-* View remaining semester lecture capacity.
-* Monitor subject-wise attendance progress through visual indicators.
+* View previously recorded attendance.
+* Track attendance by subject and date.
+* Edit attendance status and dates.
+* Delete attendance entries.
 
-### 📋 Attendance History
+### 5. Smart Attendance Recommendations
 
-* View all recorded attendance entries.
-* Review subject names, dates, and attendance statuses.
-* Edit existing attendance records.
-* Delete incorrect records.
-* Automatically recalculate attendance statistics after modifications.
+* Calculate the maximum number of future classes a student can miss while maintaining 75% attendance.
+* Calculate how many consecutive classes are needed to recover from low attendance.
+* Determine whether recovery is possible within the remaining allotted lectures.
+* Display attendance status and recommendations for each subject.
 
-### 🧮 Smart Attendance Recommendations
+### 6. User Authentication
 
-The system provides dynamic recommendations based on recorded attendance:
-
-* Calculate the maximum number of additional classes a student can miss while maintaining 75% attendance.
-* Determine how many consecutive classes a student must attend to reach the required percentage.
-* Identify whether recovery is possible within the remaining allotted lectures.
-* Display personalized recommendations for each subject.
-
-### 🟢 Attendance Status
-
-* **75% or above:** Attendance requirement satisfied.
-* **Below 75%:** Attendance requirement not satisfied.
-* Visual indicators help students quickly identify their attendance status.
-
-### 👤 Authentication Interface
-
-* Login and registration screens.
+* Login and registration interface.
 * Password confirmation during registration.
-* Student dashboard with personalized welcome information.
+* Backend authentication and persistent user accounts are planned for integration.
 
-> **Note:** Authentication is currently a frontend prototype. Verified login, persistent accounts, and database-backed sessions will be implemented during backend integration.
+## Attendance Calculation
 
----
+AttendEase calculates attendance using the following formulas:
 
-## 🛠️ Tech Stack
+**Subject Attendance Percentage**
 
-| Technology | Purpose                                |
-| ---------- | -------------------------------------- |
-| React      | Frontend development and UI components |
-| Vite       | Development server and build tool      |
-| JavaScript | Application logic and calculations     |
-| HTML5      | Page structure                         |
-| CSS3       | Styling and responsive design          |
-| Node.js    | Planned backend runtime                |
-| Express.js | Planned REST API                       |
-| PostgreSQL | Planned persistent database            |
+$$
+\text{Attendance} = \frac{\text{Classes Attended}}{\text{Classes Conducted}} \times 100
+$$
 
----
+**Overall Attendance Percentage**
 
-## 📂 Project Structure
+$$
+\text{Overall Attendance} = \frac{\text{Total Classes Attended}}{\text{Total Classes Conducted}} \times 100
+$$
+
+The overall attendance is calculated using the total attended and conducted lectures across all subjects, rather than taking the average of individual subject percentages.
+
+**Minimum Required Attendance:** 75%
+
+## Technology Stack
+
+| Technology | Purpose                           |
+| ---------- | --------------------------------- |
+| React.js   | Frontend development              |
+| Vite       | Development server and build tool |
+| JavaScript | Application logic                 |
+| HTML5      | Page structure                    |
+| CSS3       | Styling and responsive design     |
+| Node.js    | Planned backend runtime           |
+| Express.js | Planned REST API                  |
+| PostgreSQL | Planned database                  |
+
+## Project Structure
 
 ```text
-Chaos_Engg/
+AttendEase/
 │
 ├── public/
 │
 ├── src/
-│   ├── assets/
-│   ├── components/
 │   ├── App.jsx
 │   ├── App.css
-│   └── main.jsx
+│   ├── main.jsx
+│   └── assets/
 │
-├── .gitignore
 ├── index.html
 ├── package.json
 ├── package-lock.json
 ├── vite.config.js
-├── eslint.config.js
 └── README.md
 ```
 
----
+*The project structure may evolve as backend integration and additional features are implemented.*
 
-## 🚀 Getting Started
+## Getting Started
+
+Follow these steps to run AttendEase locally.
 
 ### Prerequisites
 
-Make sure you have the following installed:
+Make sure the following tools are installed on your system:
 
-* Node.js (LTS version recommended)
-* npm
-* Git
-* Visual Studio Code (recommended)
+* [Node.js](https://nodejs.org/)
+* [Git](https://git-scm.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 
 ### 1. Clone the Repository
 
@@ -159,151 +142,58 @@ npm run dev
 
 ### 5. Open the Application
 
-Visit the local URL displayed in your terminal, usually:
+Open the local URL displayed in your terminal, usually:
 
 ```text
-http://localhost:5173/
+http://localhost:5173
 ```
 
----
+## Current Development Status
 
-## 📊 Attendance Calculation Logic
+| Component                         | Status      |
+| --------------------------------- | ----------- |
+| React frontend                    | Implemented |
+| Login and registration UI         | Implemented |
+| Subject management                | Implemented |
+| Attendance recording              | Implemented |
+| Attendance history                | Implemented |
+| Edit and delete attendance        | Implemented |
+| Attendance percentage calculation | Implemented |
+| Smart attendance recommendations  | Implemented |
+| Backend API integration           | In progress |
+| PostgreSQL database integration   | Planned     |
+| Persistent user authentication    | Planned     |
+| Persistent attendance records     | Planned     |
 
-### 1. Current Attendance Percentage
+**Note:** The current frontend uses React state for attendance data. Data persistence across page refreshes and user sessions will be available after backend and database integration.
 
-The attendance percentage is calculated using:
+## Future Enhancements
 
-```text
-Attendance % = (Classes Attended / Total Classes Conducted) × 100
-```
+* Integrate a secure authentication system.
+* Store user accounts, subjects, and attendance records in PostgreSQL.
+* Synchronize attendance data across sessions and devices.
+* Implement secure, user-specific API access.
+* Add detailed attendance analytics and visual reports.
+* Improve the application with additional student-focused features.
 
-**Example:**
+## Contribution
 
-```text
-Classes Conducted = 40
-Classes Attended = 32
+Contributions, suggestions, and feedback are welcome.
 
-Attendance = (32 / 40) × 100
-           = 80%
-```
+To contribute:
 
-The student satisfies the 75% attendance requirement.
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Commit your changes.
+5. Submit a pull request.
 
-### 2. Maximum Additional Classes That Can Be Missed
+## Team
 
-The system calculates the maximum number of additional absences while maintaining the required attendance percentage.
-
-If:
-
-* A = Classes attended
-* T = Total classes conducted
-* x = Additional classes missed
-
-Then:
-
-```text
-A / (T + x) ≥ 0.75
-```
-
-The system determines the maximum valid integer value of `x`, subject to the remaining allotted lectures.
-
-### 3. Classes Required to Reach 75%
-
-When attendance is below 75%, the system calculates the number of consecutive classes that must be attended.
-
-If:
-
-* A = Classes attended
-* T = Total classes conducted
-* x = Consecutive classes attended
-
-Then:
-
-```text
-(A + x) / (T + x) ≥ 0.75
-```
-
-Solving this inequality gives the number of classes required to recover attendance.
-
-The system also checks whether the required classes fit within the remaining allotted lectures.
-
-### 4. Overall Attendance
-
-Overall attendance is calculated using the combined number of attended and conducted classes across all subjects:
-
-```text
-Overall Attendance =
-(Total Classes Attended / Total Classes Conducted) × 100
-```
-
-This avoids incorrectly averaging subject-wise percentages.
-
----
-
-## 💡 Example
-
-Consider the following attendance record:
-
-```text
-Subject: Database Management Systems
-
-Classes Conducted: 40
-Classes Attended: 28
-Classes Absent: 12
-```
-
-Attendance:
-
-```text
-28 / 40 × 100 = 70%
-```
-
-The student is below the required 75%.
-
-To recover:
-
-```text
-(28 + x) / (40 + x) ≥ 0.75
-
-28 + x ≥ 30 + 0.75x
-
-0.25x ≥ 2
-
-x ≥ 8
-```
-
-Therefore, the student must attend the next **8 consecutive classes** to reach 75% attendance.
-
----
-
-## 🔮 Future Enhancements
-
-* Backend integration using Node.js and Express.js.
-* PostgreSQL database for permanent data storage.
-* Secure student authentication and authorization.
-* Persistent attendance records across login sessions.
-* Calendar-based attendance tracking.
-* Attendance graphs and visual analytics.
-* Low-attendance notifications.
-* Attendance report export (PDF/CSV).
-* Semester-wise attendance analytics.
-* Improved mobile responsiveness.
-* Cloud deployment.
-
----
-
-## 👩‍💻 Project Information
-
-**Project Name:** Upasthiti – Smart Student Attendance Management System
+**Project:** AttendEase – Smart Student Attendance Management System
 
 **Repository:** [Chaos_Engg](https://github.com/sionababu13/Chaos_Engg)
 
-**Project Type:** Student Academic Project
-
-**Current Development Stage:** Frontend implementation with backend integration in progress.
-
 ---
 
-## 📄 License
-
-This project is developed for educational and academic purposes.
+*AttendEase – Track your attendance. Stay informed. Stay above 75%.*
