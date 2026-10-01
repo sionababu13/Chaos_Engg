@@ -75,7 +75,13 @@ function calculateAttendance(attended, conducted, allotted) {
     let recoveryPossible = true;
     let recommendation = "";
 
-    if (status === "GREEN") {
+
+    if (conducted === 0) {
+
+        recommendation =
+            "No classes have been conducted yet.";
+
+    } else if (status === "GREEN") {
 
         canMiss = calculateCanMiss(
             attended,
@@ -111,6 +117,7 @@ function calculateAttendance(attended, conducted, allotted) {
                 `75% cannot be reached within the remaining lectures.`;
         }
     }
+
 
     return {
         attended,
