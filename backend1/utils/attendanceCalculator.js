@@ -1,4 +1,35 @@
+function validateAttendanceInput(attended, conducted, allotted) {
+
+    if (attended < 0) {
+        return "Attended classes cannot be negative.";
+    }
+
+    if (conducted < 0) {
+        return "Conducted classes cannot be negative.";
+    }
+
+    if (allotted < 0) {
+        return "Allotted classes cannot be negative.";
+    }
+
+    if (attended > conducted) {
+        return "Attended classes cannot be greater than conducted classes.";
+    }
+
+    if (conducted > allotted) {
+        return "Conducted classes cannot be greater than allotted classes.";
+    }
+
+    if (allotted > 60) {
+        return "Total allotted classes cannot exceed 60.";
+    }
+
+    return null;
+}
+
+
 function calculatePercentage(attended, conducted) {
+
     if (conducted === 0) {
         return 0;
     }
@@ -8,6 +39,7 @@ function calculatePercentage(attended, conducted) {
 
 
 function getStatus(percentage) {
+
     if (percentage >= 75) {
         return "GREEN";
     }
@@ -17,6 +49,7 @@ function getStatus(percentage) {
 
 
 function calculateCanMiss(attended, conducted, remaining) {
+
     if (conducted === 0) {
         return 0;
     }
@@ -34,6 +67,7 @@ function calculateCanMiss(attended, conducted, remaining) {
 
 
 function calculateClassesRequired(attended, conducted) {
+
     if (conducted === 0) {
         return 0;
     }
@@ -56,11 +90,26 @@ function calculateClassesRequired(attended, conducted) {
 
 
 function checkRecoveryFeasibility(required, remaining) {
+
     return required <= remaining;
 }
 
 
 function calculateAttendance(attended, conducted, allotted) {
+
+    // Validate input first
+    const error = validateAttendanceInput(
+        attended,
+        conducted,
+        allotted
+    );
+
+    if (error !== null) {
+        return {
+            error: error
+        };
+    }
+
     const remaining = allotted - conducted;
 
     const percentage = calculatePercentage(
@@ -135,6 +184,7 @@ function calculateAttendance(attended, conducted, allotted) {
 
 
 module.exports = {
+    validateAttendanceInput,
     calculatePercentage,
     getStatus,
     calculateCanMiss,
