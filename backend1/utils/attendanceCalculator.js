@@ -60,10 +60,78 @@ function checkRecoveryFeasibility(required, remaining) {
 }
 
 
+function calculateAttendance(attended, conducted, allotted) {
+    const remaining = allotted - conducted;
+
+    const percentage = calculatePercentage(
+        attended,
+        conducted
+    );
+
+    const status = getStatus(percentage);
+
+    let canMiss = 0;
+    let classesRequired = 0;
+    let recoveryPossible = true;
+    let recommendation = "";
+
+    if (status === "GREEN") {
+
+        canMiss = calculateCanMiss(
+            attended,
+            conducted,
+            remaining
+        );
+
+        recommendation =
+            `You can miss ${canMiss} more class(es) and stay above 75%.`;
+
+    } else {
+
+        classesRequired =
+            calculateClassesRequired(
+                attended,
+                conducted
+            );
+
+        recoveryPossible =
+            checkRecoveryFeasibility(
+                classesRequired,
+                remaining
+            );
+
+        if (recoveryPossible) {
+
+            recommendation =
+                `Attend the next ${classesRequired} class(es) consecutively to reach 75%.`;
+
+        } else {
+
+            recommendation =
+                `75% cannot be reached within the remaining lectures.`;
+        }
+    }
+
+    return {
+        attended,
+        conducted,
+        allotted,
+        remaining,
+        percentage: Number(percentage.toFixed(2)),
+        status,
+        canMiss,
+        classesRequired,
+        recoveryPossible,
+        recommendation
+    };
+}
+
+
 module.exports = {
     calculatePercentage,
     getStatus,
     calculateCanMiss,
     calculateClassesRequired,
-    checkRecoveryFeasibility
+    checkRecoveryFeasibility,
+    calculateAttendance
 };
