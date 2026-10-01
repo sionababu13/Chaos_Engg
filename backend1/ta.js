@@ -2,8 +2,10 @@ const {
     calculatePercentage,
     getStatus,
     calculateCanMiss,
-    calculateClassesRequired
+    calculateClassesRequired,
+    checkRecoveryFeasibility
 } = require("./utils/attendanceCalculator");
+
 
 console.log("Percentage:", calculatePercentage(9, 10));
 
@@ -17,4 +19,14 @@ console.log(
 console.log(
     "Classes required:",
     calculateClassesRequired(6, 10)
+);
+
+console.log(
+    "Recovery possible:",
+    checkRecoveryFeasibility(6, 10)
+);
+
+console.log(
+    "Recovery possible:",
+    checkRecoveryFeasibility(10, 1)
 );
